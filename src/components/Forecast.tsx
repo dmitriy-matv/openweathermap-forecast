@@ -54,13 +54,10 @@ export const Forecast: React.FC<IForecastProps> = ({ city }) => {
     FetchService.getForecast(city).then((data) => {
       setData(data);
     });
-    console.log("DATA: ", data);
   }, []);
 
   useEffect(() => {
     if (data) {
-      console.log("DATA IN USE EFFECT: ", data);
-
       const weatherByDate = data.list.reduce((acc: IGroupedForecast, value) => {
         // Group initialization
         if (!acc[moment.unix(value.dt).format("MMM Do YY")]) {
@@ -83,16 +80,10 @@ export const Forecast: React.FC<IForecastProps> = ({ city }) => {
       })
     : null;
 
-  console.log(currentData);
-
-  useEffect(() => {}, []);
-
   const buttons = groupedData
     ? Object.entries(groupedData).map((day, index) => {
         let color: "secondary" | "inherit" | "default" | "primary" | undefined =
           day[0] === currentDate ? "secondary" : "primary";
-        console.log(color);
-
         return (
           <Button
             key={index}

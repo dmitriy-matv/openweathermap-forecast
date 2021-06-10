@@ -37,7 +37,6 @@ function App() {
   useEffect(() => {
     if (town !== 0) {
       FetchService.getWeather(town).then((data) => {
-        console.log(data);
         setData(data);
       });
     }

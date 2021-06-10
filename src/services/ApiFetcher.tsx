@@ -19,8 +19,6 @@ export class ApiFetcher implements IApiFetcher {
 
     const res = await fetch(url);
     if (!res.ok) {
-      console.log("error log ==> ", res.json());
-
       throw new Error(`Could not fetch ${url}. Received ${res.status}.`);
     }
 
@@ -30,8 +28,6 @@ export class ApiFetcher implements IApiFetcher {
     const url = this.FORECAST_URL + this.APP_ID + `&id=${id.toString()}`;
     const res = await fetch(url);
     if (!res.ok) {
-      console.log("error log ==> ", res.json());
-
       throw new Error(`Could not fetch ${url}. Received ${res.status}.`);
     }
 
